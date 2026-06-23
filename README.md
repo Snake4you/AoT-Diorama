@@ -135,3 +135,9 @@ Once the ESP32 is connected to your WiFi network, you can upload updates wireles
 ```bash
 pio run --target upload --upload-port titandiorama.local
 ```
+
+---
+
+## Credits
+*   **Deutsch:** Dieses Projekt wurde mit Unterstützung der KI-Entwicklungsumgebung **Antigravity** (Google DeepMind Team) erstellt.
+*   **English:** This project was built with the assistance of the AI coding environment **Antigravity** (Google DeepMind team).
