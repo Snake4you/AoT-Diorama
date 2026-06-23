@@ -109,8 +109,7 @@ public:
         digitalWrite(PIN_SW2_OUT1, LOW);
         digitalWrite(PIN_SW2_OUT2, LOW);
 
-        // 2. Initialize limit switch as Input Pullup
-        pinMode(PIN_M2_LIMIT_SWITCH, INPUT_PULLUP);
+
 
         // 3. Initialize LEDC PWM channels
 #if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
@@ -200,7 +199,6 @@ public:
 
     /**
      * @brief Manually drives Motor 2 at a specific speed and direction.
-     * Incorporates safety limit switch checks for downward travel.
      * @param direction 1 = Up, -1 = Down, 0 = Stop
      * @param speed PWM speed value (0-255)
      */
@@ -209,13 +207,8 @@ public:
             writeM2PWM1(speed);
             writeM2PWM2(0);
         } else if (direction == -1) {
-            if (isLimitSwitchPressed()) {
-                writeM2PWM1(0);
-                writeM2PWM2(0);
-            } else {
-                writeM2PWM1(0);
-                writeM2PWM2(speed);
-            }
+            writeM2PWM1(0);
+            writeM2PWM2(speed);
         } else {
             writeM2PWM1(0);
             writeM2PWM2(0);
@@ -223,18 +216,8 @@ public:
     }
 
     /**
-     * @brief Checks limit switch status.
-     * @return true if limit switch is pressed (Active LOW, returns LOW)
-     */
-    bool isLimitSwitchPressed() {
-        return digitalRead(PIN_M2_LIMIT_SWITCH) == LOW;
-    }
-
-    /**
      * @brief Asynchronously handles homing sequence for Motor 2.
-     * Drives Motor 2 downwards at a safe homing speed until limit switch is triggered.
-     * @param homingSpeed PWM duty cycle for homing
-     * @return true when homing is complete, false while in progress
+     * Drives Motor 2 downwards at a safe homing speed until stall current is detected.
      */
     void startHoming() {
         m2HomingStartTime = millis();

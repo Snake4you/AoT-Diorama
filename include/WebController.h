@@ -224,7 +224,6 @@ private:
         doc["state"] = stateToString(currentState);
         doc["m1_i"] = motors.getMotor1Current();
         doc["m2_i"] = motors.getMotor2Current();
-        doc["lim"] = motors.isLimitSwitchPressed();
         doc["time"] = timeLeft;
 
         // Add manual states for sync

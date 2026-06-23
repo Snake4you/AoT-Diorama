@@ -18,6 +18,16 @@ Dieses Projekt implementiert eine voll funktionsfähige, asynchrone und ereignis
     *   **Sicherheits-Heartbeat:** Im Tippbetrieb stoppen die Motoren automatisch, wenn das Dashboard länger als 800 ms kein Steuersignal sendet.
 *   **Over-The-Air (OTA) Updates & mDNS:** Drahtloses Flashen im lokalen Netzwerk und Erreichbarkeit unter `titandiorama.local`.
 
+### LED-Segmentaufteilung (Gesamt: 226 WS2812B LEDs)
+Die LEDs sind in sieben Segmente aufgeteilt und können unabhängig in der Helligkeit geregelt werden:
+1.  **Segment 0: Lower Door** (Start: 0, Länge: 48 LEDs) – Testfarbe: Rot
+2.  **Segment 1: Fire Right** (Start: 48, Länge: 16 LEDs) – Testfarbe: Orange
+3.  **Segment 2: Lower Books** (Start: 64, Länge: 48 LEDs) – Testfarbe: Grün
+4.  **Segment 3: Fire Left** (Start: 112, Länge: 16 LEDs) – Testfarbe: Blau
+5.  **Segment 4: Upper Books** (Start: 128, Länge: 48 LEDs) – Testfarbe: Lila
+6.  **Segment 5: Upper Frame** (Start: 176, Länge: 48 LEDs) – Testfarbe: Gelb
+7.  **Segment 6: Titan Eye** (Start: 224, Länge: 2 LEDs) – Testfarbe: Weiß
+
 ### Hardware-Belegung (GPIO Pins)
 *   **GPIO26:** Externe Stromversorgung aktivieren (`VCC_EN`, HIGH = Aktiv)
 *   **GPIO02:** Status-LED (1x WS2812B)
@@ -30,7 +40,6 @@ Dieses Projekt implementiert eine voll funktionsfähige, asynchrone und ereignis
     *   **GPIO27:** PWM / Richtung 1
     *   **GPIO32:** PWM / Richtung 2
     *   **GPIO36 (ADC):** Strommessung
-    *   **GPIO17:** Physischer Endlagenschalter (optional, intern auf PULLUP gesetzt)
 *   **Digital-Ausgänge (Schalter / Relais):**
     *   **GPIO14 / GPIO15:** Ausgang 1 (H-Brücke)
     *   **GPIO04 / GPIO12:** Ausgang 2 (H-Brücke)
@@ -47,9 +56,19 @@ This project implements a fully asynchronous, event-driven controller for an int
 *   **FastLED Custom Segmentation:** Direct control over 7 distinct LED segments on the main strip (226 WS2812B LEDs) with individual brightness scaling and an on-board status LED.
 *   **H-Bridge Motor Control:**
     *   **Motor 1 (Horizontal Slider):** Reciprocating motion with configurable speed and safety current limit.
-    *   **Motor 2 (Linear Actuator):** Homing and travel reversals detected purely via current monitoring (stall detection) to prevent mechanical failures.
+    *   **Motor 2 (Linear Actuator):** Homing and travel reversals detected purely via current monitoring (stall detection) to prevent mechanical failures. No physical limit switches required.
     *   **Safety Heartbeat:** Manual jogging automatically halts the motors if no dashboard heartbeat is received within 800 ms.
 *   **Over-The-Air (OTA) Updates & mDNS:** Network flashing capabilities and accessibility via `titandiorama.local`.
+
+### LED Segment Mapping (Total: 226 WS2812B LEDs)
+The main strip is divided into seven segments, with individual brightness controls:
+1.  **Segment 0: Lower Door** (Start: 0, Length: 48 LEDs) – Test Color: Red
+2.  **Segment 1: Fire Right** (Start: 48, Length: 16 LEDs) – Test Color: Orange
+3.  **Segment 2: Lower Books** (Start: 64, Length: 48 LEDs) – Test Color: Green
+4.  **Segment 3: Fire Left** (Start: 112, Length: 16 LEDs) – Test Color: Blue
+5.  **Segment 4: Upper Books** (Start: 128, Length: 48 LEDs) – Test Color: Purple
+6.  **Segment 5: Upper Frame** (Start: 176, Length: 48 LEDs) – Test Color: Yellow
+7.  **Segment 6: Titan Eye** (Start: 224, Length: 2 LEDs) – Test Color: White
 
 ### Hardware Pin Mapping
 *   **GPIO26:** External components VCC power enable (`VCC_EN`, active HIGH)
@@ -63,7 +82,6 @@ This project implements a fully asynchronous, event-driven controller for an int
     *   **GPIO27:** PWM / Direction 1
     *   **GPIO32:** PWM / Direction 2
     *   **GPIO36 (ADC):** Current sensing
-    *   **GPIO17:** Homing Limit Switch (optional, internal Pullup, Active LOW)
 *   **Digital Outputs (Switches / Relays):**
     *   **GPIO14 / GPIO15:** Switch Output 1 (H-Bridge)
     *   **GPIO04 / GPIO12:** Switch Output 2 (H-Bridge)

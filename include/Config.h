@@ -18,11 +18,10 @@
 #define PIN_M1_PWM2             25  // PWM / Direction 2
 #define PIN_M1_CURRENT_ADC      34  // ADC Channel for Current Monitoring
 
-// Motor 2 (Linear Actuator, H-Bridge & Current & Limit)
+// Motor 2 (Linear Actuator, H-Bridge & Current)
 #define PIN_M2_PWM1             27  // PWM / Direction 1
 #define PIN_M2_PWM2             32  // PWM / Direction 2
 #define PIN_M2_CURRENT_ADC      36  // ADC Channel for Current Monitoring
-#define PIN_M2_LIMIT_SWITCH     17  // Home Limit Switch (Internal Pullup, Active LOW)
 
 // H-Bridge Switch Outputs
 #define PIN_SW1_OUT1            14  // Switch 1, Pin 1

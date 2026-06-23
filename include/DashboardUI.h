@@ -422,24 +422,7 @@ const char DASHBOARD_HTML[] PROGMEM = R"rawhtml(
             50% { opacity: 0.2; }
         }
 
-        .limit-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-        }
-        
-        .limit-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #555;
-        }
-        
-        .limit-dot.active {
-            background: var(--danger);
-            box-shadow: 0 0 8px var(--danger);
-        }
+
 
         .btn-reset-estop {
             background: #ffc107;
@@ -476,10 +459,7 @@ const char DASHBOARD_HTML[] PROGMEM = R"rawhtml(
             <h1>Titan Diorama</h1>
         </div>
         <div class="header-status">
-            <div id="limit-indicator" class="limit-status">
-                <div id="limit-dot" class="limit-dot"></div>
-                <span>Limit Switch</span>
-            </div>
+
             <div id="ws-badge" class="badge badge-ws">Disconnected</div>
             <div id="state-badge" class="badge badge-state">UNKNOWN</div>
         </div>
@@ -873,13 +853,7 @@ const char DASHBOARD_HTML[] PROGMEM = R"rawhtml(
             document.getElementById('m1-current-text').innerText = `${data.m1_i.toFixed(1)} mA`;
             document.getElementById('m2-current-text').innerText = `${data.m2_i.toFixed(1)} mA`;
             
-            // Limit switch
-            const limitDot = document.getElementById('limit-dot');
-            if (data.lim) {
-                limitDot.classList.add('active');
-            } else {
-                limitDot.classList.remove('active');
-            }
+
 
             // Update Progress bars
             const m1Limit = parseFloat(document.getElementById('m1-limit-val').innerText) || 1200;
