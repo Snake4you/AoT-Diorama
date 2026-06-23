@@ -6,6 +6,9 @@
 
 ## Deutsch
 
+> [!NOTE]
+> **WICHTIGER HINWEIS:** Dieses Projekt befindet sich aktuell in der Testphase und dient als Testprogramm zur Verifizierung der Hardware-Komponenten und der Steuerungslogik.
+
 Dieses Projekt implementiert eine voll funktionsfähige, asynchrone und ereignisgesteuerte Steuerung für ein interaktives Diorama (Attack on Titan Thema). Das System basiert auf einem **ESP32-WROOM-32E** und wird über das **PlatformIO**-Framework (Arduino) programmiert.
 
 ### Features
@@ -47,6 +50,9 @@ Die LEDs sind in sieben Segmente aufgeteilt und können unabhängig in der Helli
 ---
 
 ## English
+
+> [!NOTE]
+> **IMPORTANT NOTE:** This project is currently in the testing phase and serves as a test program to verify the hardware components and the control logic.
 
 This project implements a fully asynchronous, event-driven controller for an interactive diorama (Attack on Titan themed). The system is built on an **ESP32-WROOM-32E** MCU programmed using the **PlatformIO** framework with the Arduino core.
 
