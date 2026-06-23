@@ -21,6 +21,15 @@ Dieses Projekt implementiert eine voll funktionsfähige, asynchrone und ereignis
     *   **Sicherheits-Heartbeat:** Im Tippbetrieb stoppen die Motoren automatisch, wenn das Dashboard länger als 800 ms kein Steuersignal sendet.
 *   **Over-The-Air (OTA) Updates & mDNS:** Drahtloses Flashen im lokalen Netzwerk und Erreichbarkeit unter `titandiorama.local`.
 
+### Webzugriff & Netzwerk
+Standardmäßig startet der ESP32 im **Access Point (AP) Modus**:
+*   **SSID (WLAN-Name):** `TitanDioramaAP`
+*   **Passwort:** `12345678`
+*   **IP-Adresse:** `192.168.4.1` (im Browser aufrufen)
+*   **mDNS-Adresse:** `http://titandiorama.local` (falls mDNS vom Betriebssystem unterstützt wird)
+
+Über das Web-Dashboard können auch die Anmeldedaten für das eigene Heimnetzwerk (Station Mode) hinterlegt werden. Nach erfolgreicher Verbindung ist die Weboberfläche unter der vom Heimnetzwerk zugewiesenen IP-Adresse oder ebenfalls über `http://titandiorama.local` erreichbar.
+
 ### LED-Segmentaufteilung (Gesamt: 226 WS2812B LEDs)
 Die LEDs sind in sieben Segmente aufgeteilt und können unabhängig in der Helligkeit geregelt werden:
 1.  **Segment 0: Lower Door** (Start: 0, Länge: 48 LEDs) – Testfarbe: Rot
@@ -65,6 +74,15 @@ This project implements a fully asynchronous, event-driven controller for an int
     *   **Motor 2 (Linear Actuator):** Homing and travel reversals detected purely via current monitoring (stall detection) to prevent mechanical failures. No physical limit switches required.
     *   **Safety Heartbeat:** Manual jogging automatically halts the motors if no dashboard heartbeat is received within 800 ms.
 *   **Over-The-Air (OTA) Updates & mDNS:** Network flashing capabilities and accessibility via `titandiorama.local`.
+
+### Web Access & Network
+By default, the ESP32 starts in **Access Point (AP) mode**:
+*   **SSID (WiFi Name):** `TitanDioramaAP`
+*   **Password:** `12345678`
+*   **IP Address:** `192.168.4.1` (open in your web browser)
+*   **mDNS Address:** `http://titandiorama.local` (if supported by your operating system)
+
+You can also use the Web Dashboard to configure your home WiFi credentials (Station Mode). Once connected, the web interface will be accessible under the IP address assigned by your router or via `http://titandiorama.local`.
 
 ### LED Segment Mapping (Total: 226 WS2812B LEDs)
 The main strip is divided into seven segments, with individual brightness controls:
